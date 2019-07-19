@@ -178,8 +178,8 @@ contract BasicLockedToken is TST20Basic, Ownable {
     function checkTransferAuth(address _from, uint256 _transferValue) internal view {
         require(transferEnable);
 
-        LockedData storage account = lockedAccounts[_from];
-        require(balanceOf(_from).sub(account.lockedValue) >= _transferValue || account.lockedTime <= block.timestamp);
+        LockedData storage account = lockedAccounts[_from];        
+        require(account.lockedTime <= block.timestamp || (balanceOf(_from) > account.lockedValue && balanceOf(_from).sub(account.lockedValue) >= _transferValue));
     }
 
     //Allow owner to stop or start all the transfer
