@@ -238,7 +238,7 @@ contract Acorn is StandardToken {
 
 
     function Acorn() public {
-        totalSupply = 10000000000 * 10 * * decimals;
+        totalSupply = 10000000000 * 10 ** decimals;
         balances[msg.sender] = totalSupply; //Send all tokens to owner
     }
 
